@@ -15,5 +15,5 @@ output "security_group_id" {
 
 output "key_pair_name" {
   description = "创建的 SSH 密钥对名称"
-  value       = aws_key_pair.ec2_key.key_name
+  value       = aws_key_pair.ec2_ssh_key.key_name
 }
