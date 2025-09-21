@@ -43,32 +43,10 @@ resource "aws_security_group" "ec2_sg" {
   }
 }
 
-# 创建 SSH 密钥对
-resource "aws_key_pair" "ec2_key" {
+# 创建AWS密钥对，使用提供的公钥
+resource "aws_key_pair" "ec2_ssh_key" {
   key_name   = var.key_name
-  public_key = tls_private_key.ec2_ssh_key.public_key_openssh
-
-  tags = {
-    Name        = "${var.project_name}-${var.environment}-ssh-key"
-    Project     = var.project_name
-    Environment = var.environment
-  }
-}
-
-# 生成 SSH 私钥
-resource "tls_private_key" "ec2_ssh_key" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-# 将私钥保存到本地文件
-resource "local_file" "private_key" {
-  content  = tls_private_key.ec2_ssh_key.private_key_pem
-  filename = "${path.cwd}/ssh_key_file/${var.key_name}.pem"
-
-  provisioner "local-exec" {
-    command = "chmod 600 ${path.root}/ssh_key_file/${var.key_name}.pem"
-  }
+  public_key = var.public_key  # 这个变量在tfvars中提供，例如：public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvE1gsc8r+SOjxCavqYSe/ZLtdCKcQr1W2ElvU0Qwp34ynXFTQgnaJKAHWZUj5BmrPdj/u03GH5mzlI2+8gp0UwrbOFqm3S16X3zyEmPzEKnrLWUuYygHejv7x/b2gdu9UlgzQ2QmzLsboIK+SWvnHk0FvuQLtr4AdkCRYKE6TgFVVma/dr0MibeKSQ23+Be1tVf0MznDHvaocoz3xIxqTJynZyxSHnvzHdFGD/m7Ibu3ovRKhUdrYrHaG5x5/M+xbFE6OG7S2E9866LwRoldwffamktZtOC2yunZHlObFpmnFv+EqLSo+ZrPzfsQQS/jLbf9xZJbSL8BEF4epUoirE0q98W6WELxiYo87nMwNT7QMkSw9aBJiFcA6WMRzFzrxhE7o5dmG7UKol6Z5chwd+0Ngn2wASsStM2LtWjbspoJObnjSfQVbCZTNPk6yYkPrKLKEA8Dxy9anqq0CNlgqdv4RDmjH2tbuiv4H6TyTINFjfFxTY4ek8zBwc6xJf1U= ubuntu@ip-172-20-1-15"
 }
 
 # 创建 EC2 实例
@@ -79,7 +57,7 @@ resource "aws_instance" "ec2_instance" {
   instance_type          = var.instance_type
   subnet_id              = element(var.private_subnets, count.index % length(var.private_subnets))
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-  key_name               = aws_key_pair.ec2_key.key_name
+  key_name               = aws_key_pair.ec2_ssh_key.key_name
 
   tags = {
     Name        = "${var.project_name}-${var.environment}-ec2-${count.index + 1}"
