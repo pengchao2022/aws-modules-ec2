@@ -15,5 +15,5 @@ output "security_group_id" {
 
 output "instance_private_dns" {
   description = "从子模块获取的私有 DNS 名称列表"
-  value       = module.ec2_instances.instance_private_dns
+  value       = module.ec2_instance.instance_private_dns
 }
