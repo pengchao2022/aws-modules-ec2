@@ -8,5 +8,5 @@ private_subnet_ids = [
 instance_count = 1
 instance_type  = "t3.micro"
 key_name       = "dev-ec2-ssh-key"
-project_name   = "aws-ec2-project"
-environment    = "development"
+project_name   = "retail-project"
+environment    = "dev"
