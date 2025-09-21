@@ -8,6 +8,11 @@ output "instance_private_ips" {
   value       = aws_instance.ec2_instance[*].private_ip
 }
 
+output "instance_private_dns" {
+  description = "私有 DNS 名称列表"
+  value       = aws_instance.ec2_instance[*].private_dns
+}
+
 output "security_group_id" {
   description = "创建的安全组 ID"
   value       = aws_security_group.ec2_sg.id
