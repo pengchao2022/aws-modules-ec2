@@ -7,6 +7,6 @@ private_subnet_ids = [
 ]
 instance_count = 1
 instance_type  = "t3.micro"
-key_name       = "dev-pro-ssh-key"
+key_name       = "dev-pro1-ssh-key"
 project_name   = "retail-pro"
 environment    = "dev"
