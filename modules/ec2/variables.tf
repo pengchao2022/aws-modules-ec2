@@ -37,3 +37,8 @@ variable "environment" {
   type        = string
   default     = "dev"
 }
+
+variable "public_key" {
+  description = "The public key material"
+  type        = string
+}

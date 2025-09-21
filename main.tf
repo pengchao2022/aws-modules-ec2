@@ -9,6 +9,7 @@ module "ec2_instance" {
   instance_count = var.instance_count
   instance_type  = var.instance_type
   key_name       = var.key_name
+  public_key     = var.public_key
 
   # 标签
   project_name = var.project_name
