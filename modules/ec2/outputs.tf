@@ -17,3 +17,8 @@ output "key_pair_name" {
   description = "创建的 SSH 密钥对名称"
   value       = aws_key_pair.ec2_ssh_key.key_name
 }
+
+output "instance_private_dns" {
+  description = "私有 DNS 名称列表"
+  value       = aws_instance.ec2_instance[*].private_dns
+}
