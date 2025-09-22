@@ -26,7 +26,7 @@ resource "aws_security_group" "ec2_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] 
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -46,7 +46,7 @@ resource "aws_security_group" "ec2_sg" {
 # create the key 
 resource "aws_key_pair" "ec2_ssh_key" {
   key_name   = var.key_name
-  public_key = var.public_key 
+  public_key = var.public_key
 }
 
 # create ec2 instance
