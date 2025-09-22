@@ -4,36 +4,36 @@ variable "vpc_id" {
 }
 
 variable "private_subnets" {
-  description = "私有子网 ID 列表"
+  description = "private subnets lists"
   type        = list(string)
 }
 
 variable "instance_count" {
-  description = "要创建的 EC2 实例数量"
+  description = "number of ec2 instances"
   type        = number
   default     = 1
 }
 
 variable "instance_type" {
-  description = "EC2 实例类型"
+  description = "EC2 instance type"
   type        = string
   default     = "t3.micro"
 }
 
 variable "key_name" {
-  description = "SSH 密钥对名称"
+  description = "SSH key name"
   type        = string
   default     = "ec2-ssh-key"
 }
 
 variable "project_name" {
-  description = "项目名称，用于资源标签"
+  description = "project name"
   type        = string
-  default     = "my-project"
+  default     = "allen-project"
 }
 
 variable "environment" {
-  description = "环境名称，用于资源标签"
+  description = "env name like dev,stage,prod..."
   type        = string
   default     = "dev"
 }

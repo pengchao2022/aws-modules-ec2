@@ -1,19 +1,19 @@
 output "instance_ids" {
-  description = "创建的 EC2 实例 ID"
+  description = "created id of ec2 instances"
   value       = module.ec2_instance.instance_ids
 }
 
 output "instance_private_ips" {
-  description = "创建的 EC2 实例私有 IP"
+  description = "created provate ip of ec2 instances"
   value       = module.ec2_instance.instance_private_ips
 }
 
 output "security_group_id" {
-  description = "创建的安全组 ID"
+  description = "created sg id"
   value       = module.ec2_instance.security_group_id
 }
 
 output "instance_private_dns" {
-  description = "从子模块获取的私有 DNS 名称列表"
+  description = "private dns lists"
   value       = module.ec2_instance.instance_private_dns
 }
