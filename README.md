@@ -1,4 +1,4 @@
-# aws-modules-ec2
+# AWS MODULES EC2
 
 DevOps Tutorials written by me, the ec2 module will create internal EC2s with security group also ubuntu os
 
