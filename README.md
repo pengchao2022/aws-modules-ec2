@@ -8,6 +8,10 @@ create EC2
 
 
 ## Usage
+
+- give your real values in terraform.tfvars
+
+
 ```terraform
 region = "us-east-1"
 vpc_id = "vpc-0221798b4b768d1ae"
