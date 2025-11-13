@@ -1,9 +1,9 @@
 region = "us-east-1"
-vpc_id = "vpc-0221798b4b768d1ae"
+vpc_id = "vpc-0976de1a5f727d5b1"
 private_subnet_ids = [
-  "subnet-0bf1856d39ee6c40e",
-  "subnet-00f234c4d570ff89b",
-  "subnet-09c88ee307d7fa235",
+  "subnet-08d757131aac70b91",
+  "subnet-0b4259fab8c1539c4",
+  "subnet-03b64ac069bf50233",
 ]
 instance_count = 4
 instance_type  = "t3.smaller"
