@@ -6,7 +6,7 @@ private_subnet_ids = [
   "subnet-09c88ee307d7fa235",
 ]
 instance_count = 4
-instance_type  = "t3.micro"
+instance_type  = "t3.smaller"
 key_name       = "dev-pro-ssh-key-1"
 project_name   = "retail-pro"
 environment    = "dev"
